@@ -161,7 +161,7 @@ public:
 
     bool does_contain(const t_vertex_id vertex_id) const
     {
-        return _contains[vertex_id];
+       // return _contains[vertex_id];
 
         return false;
     }
@@ -302,7 +302,7 @@ t_a_star::t_a_star() {}
 
 void t_a_star::operator()(const t_graph_weighted& graph, const t_vertex_id from_id, const t_vertex_id to_id)
 {
-    t_priority_queue             frontier { graph.area() };
+    t_priority_queue                    frontier { graph.area() };
 
     std::vector<size_t>                 debug_processed_nexts        (graph.area(), {});
     std::vector<size_t>                 debug_processed_currents     (graph.area(), {});
@@ -679,8 +679,6 @@ t_graph_weighted make_2d_halled_graph_10_x_10()
     // without wall: 77 67 57 47 37 27 17 7 6 5 4 3 2 1 0
     // with wall   : 77 87 97 96 95 94 84 74 64 54 44 34 33 32 31 21 11 1 0 (steps: )
 
-    graph.print_info();
-
     graph.destroy_verteces({
                             t_vertex_id { 85 },
                             t_vertex_id {  6 },
@@ -694,8 +692,6 @@ t_graph_weighted make_2d_halled_graph_10_x_10()
                             t_vertex_id { 76 },
                             t_vertex_id { 86 }
     });
-
-    graph.print_info();
 
     return graph;
 }

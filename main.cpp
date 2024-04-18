@@ -651,8 +651,6 @@ void test_a_star_random(size_t width, size_t height, size_t percent)
 {
     t_graph_weighted graph = make_2d_weighted_graph(width, height);
 
-    graph.print_info();
-
     t_graph_vertex_ids to_destroy {};
     for (size_t _ {}; _ < (width * height * percent / 100); ++ _) {
         const t_vertex_id generated_id = std::rand() % (width * height - 1);
@@ -668,8 +666,6 @@ void test_a_star_random(size_t width, size_t height, size_t percent)
         to_destroy.emplace_back(t_vertex_id { generated_id });
     }
     graph.destroy_verteces(to_destroy);
-
-    graph.print_info();
 
     t_a_star a_star {};
 
@@ -695,7 +691,8 @@ int main()
     test_a_star_random(1000,     1000, 30);
     test_a_star_random(5000,     5000, 30);
     test_a_star_random(10000,   10000, 30);
-    test_a_star_random(100000, 100000, 30);
+    test_a_star_random(15000,   15000, 30);
+    test_a_star_random(25000,   25000, 30);
 
     ////////////////////////////////////////////////////////////////////////////////
     /// merge sorting

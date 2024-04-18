@@ -83,18 +83,14 @@ public:
 t_graph_weighted::t_graph_weighted(const size_t w, const size_t h)
     : _size { w, h }
 {
-    const size_t verteces = area();
+    const size_t amount = area();
 
-    _verteces.reserve(verteces);
+    _verteces.reserve(amount);
 
-    // _edges.resize(verteces * 4, {});
+    const size_t quad_amount { 4 * amount };
+
+    _edges.reserve(quad_amount);
 }
-
-size_t t_graph_weighted::verteces() const { return _verteces.size(); }
-
-size_t t_graph_weighted::edges() const { return _edges.size(); }
-
-size_t t_graph_weighted::area() const { return _size._width * _size._height; }
 
 
 void t_graph_weighted::create_vertex(const t_vertex_id vertex_id, int x, int y)
@@ -145,61 +141,15 @@ void t_graph_weighted::destroy_edge(const t_vertex_id from_id, const t_vertex_id
     vertex.unlink_with(to_id);
 }
 
-// const t_graph_edge_weight t_graph_weighted::get_weight_by_from_to_ids(const t_vertex_id from_id, const t_vertex_id to_id) const
-// {
-//     // auto finding_from_to_predicate = [&from_id, &to_id](const t_graph_edge& edge)
-//     // {
-//     //     return edge._from_id == from_id && edge._to_id == to_id;
-//     // };
-
-//     // if (t_graph_edges::iterator iterator = std::find_if(_edges.begin(), _edges.end(), finding_from_to_predicate); iterator != _edges.end())
-//     // {
-//     //     return iterator->_weight;
-//     // }
-
-//     // throw std::runtime_error { "get_weight_by_from_to_ids: edge { from_id: " + std::to_string(from_id) + ", to_id: " + std::to_string(to_id) + " } does not exist" };
-
-//     throw std::runtime_error { "" };
-// }
-
-const t_graph_edge_weight t_graph_weighted::get_weight_by_edge_id(const t_edge_id edge_id) const
-{
-    const t_graph_edge& edge = _edges[edge_id];
-
-    if (edge._id != edge_id)
-    {
-        throw std::runtime_error { "destroy_edge: vertex id { " + std::to_string(edge._id) + " } is not equal with id {" + std::to_string(edge_id) + " }" };
-    }
-
-    return edge._weight;
-}
-
-
-// const t_graph_vertex_ids& t_graph_weighted::get_linked_vertex_ids(const t_vertex_id vertex_id) const
-// {
-//     const t_graph_vertex& vertex = _verteces[vertex_id];
-
-//     if (vertex._id != vertex_id)
-//     {
-//         throw std::runtime_error { "get_linked_vertex_ids: vertex id { " + std::to_string(vertex._id) + " } is not equal with " + std::to_string(vertex_id) };
-//     }
-
-//     t_graph_vertex_ids linked_with_ids = vertex.get_linked_vertex_ids();
-
-//     return linked_with_ids;
-// }
 
 const bool t_graph_weighted::does_exist(const t_vertex_id vertex_id) const
 {
-    return std::find_if(_verteces.begin(), _verteces.end(), t_finding_vertex_by_id { vertex_id }) != _verteces.end();
+    const t_graph_vertex& vertex = _verteces[vertex_id];
+
+    return vertex._id == vertex_id;
 }
 
-void t_graph_weighted::print_info() const
-{
-    std::cout << "verteces: " << _verteces.size() << " edges: " << _edges.size() << std::endl;
-}
-
-void t_graph_weighted::check(const t_vertex_id vertex_id) const
+void t_graph_weighted::validate(const t_vertex_id vertex_id) const
 {
     // for (const t_vertex& vertex : _verteces)
     // {

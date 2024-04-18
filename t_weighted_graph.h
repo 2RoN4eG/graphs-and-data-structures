@@ -2,26 +2,9 @@
 #define T_WEIGHTED_GRAPH_H
 
 #include "t_value.h"
-#include "t_graph.h"
 #include "t_graph_vertex.h"
+#include "t_graph_edge.h"
 #include "t_defines.h"
-
-#include <iostream>
-
-struct t_vertex_comparator
-{
-public:
-    bool operator()(const t_graph_vertex& lhs, const t_graph_vertex& rhs) const
-    {
-        return lhs._id < rhs._id;
-    }
-};
-
-// std::set не используется в силу того, что поиск необходимой вершины очень медленный за время O(log N)
-// std::vector используется с переизбытком памяти но организует доступ к вертексу за время O(1)
-
-// using t_weighted_graph_edges = std::vector<t_weighted_graph_edge>;
-
 
 struct t_size
 {
@@ -35,16 +18,17 @@ class t_graph_weighted
 public:
     t_graph_weighted(const size_t w, const size_t h);
 
-    size_t verteces() const;
-    size_t edges() const;
-
-    size_t area() const;
-
-    void create_vertex(const t_vertex_id vertex_id) = delete;
-    void destroy_vertex(const t_vertex_id vertex_id) = delete;
-
     void create_vertex(const t_vertex_id vertex_id, int x, int y);
     void destroy_verteces(const std::vector<t_vertex_id>& vertex_ids);
+
+    void create_edge(const t_vertex_id from_id, const t_vertex_id to_id, const t_graph_edge_weight weight = t_graph_edge_weight { 1 });
+    void destroy_edge(const t_vertex_id vertex_id, const t_vertex_id with_vertex_id);
+
+    // for printing purpose
+    const bool does_exist(const t_vertex_id vertex_id) const;
+
+    void validate(const t_vertex_id vertex_id) const;
+
 
     inline const t_graph_vertex& get_vertex(const t_vertex_id vertex_id) const {
         const t_graph_vertex& vertex = _verteces[vertex_id];
@@ -69,13 +53,12 @@ public:
         return edge;
     }
 
-    void create_edge(const t_vertex_id from_id, const t_vertex_id to_id, const t_graph_edge_weight weight = t_graph_edge_weight { 1 });
-    void destroy_edge(const t_vertex_id vertex_id, const t_vertex_id with_vertex_id);
+    inline const t_graph_edge_weight get_weight_by_edge_id(const t_edge_id edge_id) const
+    {
+        const t_graph_edge& edge = get_edge(edge_id);
 
-    const t_graph_edge_weight get_weight_by_from_to_ids(const t_vertex_id from_id, const t_vertex_id to_id) const = delete;
-    const t_graph_edge_weight get_weight_by_edge_id(const t_edge_id edge_id) const;
-
-    const t_graph_vertex_ids& get_linked_vertex_ids(const t_vertex_id vertex_id) const = delete;
+        return edge._weight;
+    }
 
     inline const t_vertex_id get_next_vertex_id(const t_edge_id edge_id) const
     {
@@ -92,15 +75,15 @@ public:
     }
 
 
-    const bool does_exist(const t_vertex_id vertex_id) const;
+    inline const t_width width() const { return _size._width; }
 
-    void print_info() const;
+    inline const t_height height() const { return _size._height; }
 
-    void check(const t_vertex_id vertex_id) const;
+    inline size_t verteces() const { return _verteces.size(); }
 
-    const t_width width() const { return _size._width; }
+    inline size_t edges() const { return _edges.size(); }
 
-    const t_height height() const { return _size._height; }
+    inline size_t area() const { return _size._width * _size._height; }
 
 protected:
     t_size _size;
