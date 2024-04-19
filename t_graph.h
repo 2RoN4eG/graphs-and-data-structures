@@ -17,14 +17,14 @@ public:
     size_t verteces() const;
 
     size_t edges() const;
-    
-    t_vertex_id create_vertex(const t_vertex_id value);
-    
-    void link_vertex_with(const t_vertex_id vertex_id, const t_vertex_id linked_with_id);
-    
-    const t_graph_vertex_ids& get_linked_vertex_ids(const t_vertex_id vertex_id) const;
 
-    void print_info() const;
+    t_vertex_id create_vertex(const t_vertex_id value);
+
+    void link_vertex_id(const t_vertex_id vertex_id, const t_vertex_id linked_with_id);
+
+    const t_graph_vertex_ids& get_vertex_ids(const t_vertex_id vertex_id) const;
+
+    void print_graph_info() const;
 
 protected:
     t_graph_verteces _verteces;

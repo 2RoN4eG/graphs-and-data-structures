@@ -20,7 +20,7 @@ void t_bfs::operator()(const t_graph &graph, const t_vertex_id initial_vertex_id
 
         // const t_vertex vertex = graph.get_vertex_by_id(vertex_id);
         
-        for (const t_vertex_id& linked_vertex_id : graph.get_linked_vertex_ids(vertex_id))
+        for (const t_vertex_id& linked_vertex_id : graph.get_vertex_ids(vertex_id))
         {
             if (are_visited[linked_vertex_id])
             {

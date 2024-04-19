@@ -7,7 +7,7 @@
 #include <queue>
 #include <algorithm>
 #include <iostream>
-#include <iomanip>>
+#include <iomanip>
 #include <cmath>
 #include <sstream>
 
@@ -57,7 +57,7 @@ t_heuristic_value real_distance(const t_graph_weighted& graph, const t_vertex_id
 
 t_heuristic_value heuristic(const t_graph_weighted& graph, const t_vertex_id from_id, const t_vertex_id to_id)
 {
-    return maximum_axis_distance(graph, from_id, to_id);
+    return manhattan_distance(graph, from_id, to_id);
 }
 
 struct t_vertex_id_distance_cost
@@ -161,9 +161,7 @@ public:
 
     bool does_contain(const t_vertex_id vertex_id) const
     {
-       // return _contains[vertex_id];
-
-        return false;
+        return _contains[vertex_id];
     }
 
     const t_vertex_id pop()
@@ -182,19 +180,6 @@ public:
         std::priority_queue<t_vertex_id_distance_cost, std::vector<t_vertex_id_distance_cost>, t_maximum_distance_cost>::emplace(vertex_id, distance, cost);
 
         _contains[vertex_id] = true;
-    }
-
-    void debug() const
-    {
-        // std::cout << std::endl;
-        // for (const t_distance_and_cost& distance_and_cost : _queue)
-        // {
-        //     std::cout << "vertex_id: " << distance_and_cost._vertex_id
-        //               << ", distance: " << distance_and_cost._distance
-        //               << ", cost: " << distance_and_cost._cost
-        //               << std::endl;
-        // }
-        // std::cout << std::endl;
     }
 
 private:

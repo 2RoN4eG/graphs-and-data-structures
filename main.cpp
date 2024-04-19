@@ -22,35 +22,35 @@ void test_graph()
     const t_vertex_id vertex_5_id = graph.create_vertex(generator.get_value_and_generate_next());
     const t_vertex_id vertex_6_id = graph.create_vertex(generator.get_value_and_generate_next());
     const t_vertex_id vertex_7_id = graph.create_vertex(generator.get_value_and_generate_next());
-
-    graph.link_vertex_with(vertex_1_id, vertex_2_id);
-    graph.link_vertex_with(vertex_1_id, vertex_3_id);
-    graph.link_vertex_with(vertex_1_id, vertex_4_id);
-    graph.link_vertex_with(vertex_1_id, vertex_5_id);
-
-    graph.link_vertex_with(vertex_2_id, vertex_1_id);
-    graph.link_vertex_with(vertex_2_id, vertex_4_id);
-    graph.link_vertex_with(vertex_2_id, vertex_5_id);
-
-    graph.link_vertex_with(vertex_3_id, vertex_1_id);
-    graph.link_vertex_with(vertex_3_id, vertex_6_id);
-    graph.link_vertex_with(vertex_3_id, vertex_7_id);
-
-    graph.link_vertex_with(vertex_4_id, vertex_1_id);
-    graph.link_vertex_with(vertex_4_id, vertex_2_id);
-    graph.link_vertex_with(vertex_4_id, vertex_5_id);
-
-    graph.link_vertex_with(vertex_5_id, vertex_1_id);
-    graph.link_vertex_with(vertex_5_id, vertex_2_id);
-    graph.link_vertex_with(vertex_5_id, vertex_4_id);
-
-    graph.link_vertex_with(vertex_6_id, vertex_3_id);
-    graph.link_vertex_with(vertex_6_id, vertex_7_id);
-
-    graph.link_vertex_with(vertex_7_id, vertex_3_id);
-    graph.link_vertex_with(vertex_7_id, vertex_6_id);
-
-    graph.print_info();
+    
+    graph.link_vertex_id(vertex_1_id, vertex_2_id);
+    graph.link_vertex_id(vertex_1_id, vertex_3_id);
+    graph.link_vertex_id(vertex_1_id, vertex_4_id);
+    graph.link_vertex_id(vertex_1_id, vertex_5_id);
+    
+    graph.link_vertex_id(vertex_2_id, vertex_1_id);
+    graph.link_vertex_id(vertex_2_id, vertex_4_id);
+    graph.link_vertex_id(vertex_2_id, vertex_5_id);
+    
+    graph.link_vertex_id(vertex_3_id, vertex_1_id);
+    graph.link_vertex_id(vertex_3_id, vertex_6_id);
+    graph.link_vertex_id(vertex_3_id, vertex_7_id);
+    
+    graph.link_vertex_id(vertex_4_id, vertex_1_id);
+    graph.link_vertex_id(vertex_4_id, vertex_2_id);
+    graph.link_vertex_id(vertex_4_id, vertex_5_id);
+    
+    graph.link_vertex_id(vertex_5_id, vertex_1_id);
+    graph.link_vertex_id(vertex_5_id, vertex_2_id);
+    graph.link_vertex_id(vertex_5_id, vertex_4_id);
+    
+    graph.link_vertex_id(vertex_6_id, vertex_3_id);
+    graph.link_vertex_id(vertex_6_id, vertex_7_id);
+    
+    graph.link_vertex_id(vertex_7_id, vertex_3_id);
+    graph.link_vertex_id(vertex_7_id, vertex_6_id);
+    
+    graph.print_graph_info();
 
     ////////////////////////////////////////////////////////////////////////////////
     /// DFS
@@ -214,30 +214,30 @@ void test_graph_second()
     const t_vertex_id vertex_6_id = graph.create_vertex(generator.get_value_and_generate_next());
     const t_vertex_id vertex_7_id = graph.create_vertex(generator.get_value_and_generate_next());
     const t_vertex_id vertex_8_id = graph.create_vertex(generator.get_value_and_generate_next());
-
-    graph.link_vertex_with(vertex_1_id, vertex_2_id);
-    graph.link_vertex_with(vertex_1_id, vertex_3_id);
-
-    graph.link_vertex_with(vertex_2_id, vertex_1_id);
-    graph.link_vertex_with(vertex_2_id, vertex_4_id);
-    graph.link_vertex_with(vertex_2_id, vertex_5_id);
-
-    graph.link_vertex_with(vertex_3_id, vertex_1_id);
-    graph.link_vertex_with(vertex_3_id, vertex_6_id);
-    graph.link_vertex_with(vertex_3_id, vertex_7_id);
-
-    graph.link_vertex_with(vertex_4_id, vertex_2_id);
-    graph.link_vertex_with(vertex_4_id, vertex_8_id);
-
-    graph.link_vertex_with(vertex_5_id, vertex_2_id);
-
-    graph.link_vertex_with(vertex_6_id, vertex_3_id);
-
-    graph.link_vertex_with(vertex_7_id, vertex_3_id);
-
-    graph.link_vertex_with(vertex_8_id, vertex_4_id);
-
-    graph.print_info();
+    
+    graph.link_vertex_id(vertex_1_id, vertex_2_id);
+    graph.link_vertex_id(vertex_1_id, vertex_3_id);
+    
+    graph.link_vertex_id(vertex_2_id, vertex_1_id);
+    graph.link_vertex_id(vertex_2_id, vertex_4_id);
+    graph.link_vertex_id(vertex_2_id, vertex_5_id);
+    
+    graph.link_vertex_id(vertex_3_id, vertex_1_id);
+    graph.link_vertex_id(vertex_3_id, vertex_6_id);
+    graph.link_vertex_id(vertex_3_id, vertex_7_id);
+    
+    graph.link_vertex_id(vertex_4_id, vertex_2_id);
+    graph.link_vertex_id(vertex_4_id, vertex_8_id);
+    
+    graph.link_vertex_id(vertex_5_id, vertex_2_id);
+    
+    graph.link_vertex_id(vertex_6_id, vertex_3_id);
+    
+    graph.link_vertex_id(vertex_7_id, vertex_3_id);
+    
+    graph.link_vertex_id(vertex_8_id, vertex_4_id);
+    
+    graph.print_graph_info();
 
     ////////////////////////////////////////////////////////////////////////////////
     /// DFS
@@ -458,32 +458,32 @@ void test_graph_third()
     const t_vertex_id vertex_6_id = graph.create_vertex(generator.get_value_and_generate_next());
     const t_vertex_id vertex_7_id = graph.create_vertex(generator.get_value_and_generate_next());
     const t_vertex_id vertex_8_id = graph.create_vertex(generator.get_value_and_generate_next());
-
-    graph.link_vertex_with(vertex_1_id, vertex_2_id);
-    graph.link_vertex_with(vertex_1_id, vertex_3_id);
-
-    graph.link_vertex_with(vertex_2_id, vertex_1_id);
-    graph.link_vertex_with(vertex_2_id, vertex_4_id);
-    graph.link_vertex_with(vertex_2_id, vertex_5_id);
-
-    graph.link_vertex_with(vertex_3_id, vertex_1_id);
-    graph.link_vertex_with(vertex_3_id, vertex_6_id);
-    graph.link_vertex_with(vertex_3_id, vertex_7_id);
-
-    graph.link_vertex_with(vertex_4_id, vertex_2_id);
-    graph.link_vertex_with(vertex_4_id, vertex_8_id);
-
-    graph.link_vertex_with(vertex_5_id, vertex_2_id);
-
-    graph.link_vertex_with(vertex_6_id, vertex_3_id);
-
-    graph.link_vertex_with(vertex_7_id, vertex_3_id);
-    graph.link_vertex_with(vertex_7_id, vertex_8_id);
-
-    graph.link_vertex_with(vertex_8_id, vertex_4_id);
-    graph.link_vertex_with(vertex_8_id, vertex_7_id);
-
-    graph.print_info();
+    
+    graph.link_vertex_id(vertex_1_id, vertex_2_id);
+    graph.link_vertex_id(vertex_1_id, vertex_3_id);
+    
+    graph.link_vertex_id(vertex_2_id, vertex_1_id);
+    graph.link_vertex_id(vertex_2_id, vertex_4_id);
+    graph.link_vertex_id(vertex_2_id, vertex_5_id);
+    
+    graph.link_vertex_id(vertex_3_id, vertex_1_id);
+    graph.link_vertex_id(vertex_3_id, vertex_6_id);
+    graph.link_vertex_id(vertex_3_id, vertex_7_id);
+    
+    graph.link_vertex_id(vertex_4_id, vertex_2_id);
+    graph.link_vertex_id(vertex_4_id, vertex_8_id);
+    
+    graph.link_vertex_id(vertex_5_id, vertex_2_id);
+    
+    graph.link_vertex_id(vertex_6_id, vertex_3_id);
+    
+    graph.link_vertex_id(vertex_7_id, vertex_3_id);
+    graph.link_vertex_id(vertex_7_id, vertex_8_id);
+    
+    graph.link_vertex_id(vertex_8_id, vertex_4_id);
+    graph.link_vertex_id(vertex_8_id, vertex_7_id);
+    
+    graph.print_graph_info();
 
     ////////////////////////////////////////////////////////////////////////////////
     /// DFS

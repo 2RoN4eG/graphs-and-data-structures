@@ -29,19 +29,19 @@ t_vertex_id t_graph::create_vertex(const t_vertex_id vertex_id)
     return vertex_id;
 }
 
-void t_graph::link_vertex_with(const t_vertex_id vertex_id, const t_vertex_id neighbor_id)
+void t_graph::link_vertex_id(const t_vertex_id vertex_id, const t_vertex_id neighbor_id)
 {
-    _verteces[vertex_id].link_with(neighbor_id);
+    _verteces[vertex_id].link_vertex_id(neighbor_id);
 
     _edges.emplace_back(vertex_id, neighbor_id);
 }
 
-const t_graph_vertex_ids& t_graph::get_linked_vertex_ids(const t_vertex_id vertex_id) const
+const t_graph_vertex_ids& t_graph::get_vertex_ids(const t_vertex_id vertex_id) const
 {
-    return _verteces[vertex_id].get_linked_vertex_ids();
+    return _verteces[vertex_id].vertex_ids();
 }
 
-void t_graph::print_info() const
+void t_graph::print_graph_info() const
 {
     std::cout << "verteces " << _verteces.size() << std::endl;
     std::cout << "paths " << _edges.size() << std::endl;

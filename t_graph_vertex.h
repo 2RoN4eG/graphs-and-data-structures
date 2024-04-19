@@ -31,17 +31,20 @@ public:
     t_graph_vertex(const t_vertex_id& id);
     t_graph_vertex(const t_vertex_id& id, const t_axis x, const t_axis y);
 
-    void link_with(const t_vertex_id vertex_id);
-    void unlink_with(const t_vertex_id& vertex_id);
+    void link_vertex_id(const t_vertex_id vertex_id);
+    void unlink_vertex_id(const t_vertex_id& vertex_id);
     void clear_linked_ids();
 
-    void register_edge_id(const t_edge_id edge_id);
+    void link_edge_id(const t_edge_id edge_id);
 
     inline const t_graph_edge_ids& edge_ids() const {
         return _edge_ids;
     }
 
-    const t_graph_vertex_ids& get_linked_vertex_ids() const;
+    inline const t_graph_vertex_ids& vertex_ids() const {
+        return _vertex_ids;
+    }
+
     const size_t get_linked_vertex_size() const;
 
     t_graph_vertex(const t_graph_vertex& other) = default;
@@ -55,9 +58,9 @@ public:
 
     t_2d_position _position;
 
-    mutable t_graph_vertex_ids _linked_vertex_ids;
+    t_graph_vertex_ids _vertex_ids;
 
-    mutable t_graph_edge_ids _edge_ids;
+    t_graph_edge_ids _edge_ids;
 };
 
 using t_graph_verteces = std::vector<t_graph_vertex>;

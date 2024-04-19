@@ -18,7 +18,7 @@ void t_dfs::operator()(const t_graph &graph, const t_vertex_id &initial_vertex_i
         const t_vertex_id vertex_id = stack.top();
         stack.pop();
         
-        for (const t_vertex_id linked_vertex_id : graph.get_linked_vertex_ids(vertex_id))
+        for (const t_vertex_id linked_vertex_id : graph.get_vertex_ids(vertex_id))
         {
             if (are_visited[linked_vertex_id])
             {

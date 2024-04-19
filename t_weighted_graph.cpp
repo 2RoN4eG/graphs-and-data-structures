@@ -18,7 +18,7 @@ void t_print_verteces_command(const t_graph_verteces& verteces)
         std::cout << "vertex { id: " << vertex._id
                   << ", x: " << vertex._position._x
                   << ", y: " << vertex._position._y
-                  << " } linked with " << vertex.get_linked_vertex_ids().size()
+                  << " } linked with " << vertex.vertex_ids().size()
                   << std::endl;
     }
 }
@@ -116,7 +116,7 @@ void t_graph_weighted::create_edge(const t_vertex_id from_id, const t_vertex_id 
         throw std::runtime_error { " from vertex's id is not equeal with from_id" };
     }
 
-    vertex.register_edge_id(edge_id);
+    vertex.link_edge_id(edge_id);
 }
 
 void t_graph_weighted::destroy_edge(const t_vertex_id from_id, const t_vertex_id to_id)
@@ -137,8 +137,8 @@ void t_graph_weighted::destroy_edge(const t_vertex_id from_id, const t_vertex_id
     {
         throw std::runtime_error { "destroy_edge: vertex id { " + std::to_string(vertex._id) + " } is not equal with id {" + std::to_string(from_id) + " }" };
     }
-
-    vertex.unlink_with(to_id);
+    
+    vertex.unlink_vertex_id(to_id);
 }
 
 
